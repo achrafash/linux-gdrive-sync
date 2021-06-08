@@ -1,5 +1,6 @@
 token.json
 history.csv
+nohup.out
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
