@@ -3,7 +3,6 @@
 import os
 import time
 
-
 from datetime import datetime
 from drive import upload, create_folder, search, get_gdrive_service
 from utils import read_config
@@ -48,6 +47,6 @@ if __name__ == '__main__':
     config = read_config()
 
     while True:
-        time.sleep(60)
+        time.sleep(int(config['interval']))
         print(f"Checking {config['name']}")
         main(config['local'])
