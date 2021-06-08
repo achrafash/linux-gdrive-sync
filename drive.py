@@ -65,6 +65,13 @@ def create_folder(service:Resource, name:str) -> str:
 
 
 def upload(service:Resource, folder_id:str, filepath:str, filename:str, mimetype:str) -> str:
+    with open('history.csv', 'r') as f:
+            lines = f.readlines()
+            for line in lines:
+                name = line.split(',')[3]
+                if name == filename:
+                    raise Exception('File already uploaded')
+
     file_metadata = {'name': filename, 'parents': [folder_id]}
     media = MediaFileUpload(filepath, mimetype=mimetype, resumable=True)
     file = service.files().create(body=file_metadata,
